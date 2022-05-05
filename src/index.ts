@@ -18,7 +18,7 @@ interface CustomHeaders extends IncomingHttpHeaders {
 let baseHeaders: CustomHeaders = { 
     'content-type': 'application/json',
     'cookie': baseCookie,
-    'user-agent': userAgent
+    'user-agent': userAgent 
 };
 
 let baseUrl: string = "https://my.callofduty.com";
@@ -344,6 +344,12 @@ class SHOP {
 }
 
 class USER {
+    friendOnline = async (gamertag: string, platform: platforms) => {
+        if (platform === platforms.Battlenet || platform === platforms.Activision || platform === platforms.Uno) gamertag = cleanClientName(gamertag);
+        if (platform === platforms.Uno || platform === platforms.Activision) platform = platforms.Uno;
+        return await sendRequest(`/codfriends/v1/${platform}/gamer/${gamertag}/compendium`);
+    };
+    
     friendFeed = async (gamertag: string, platform: platforms) => {
         if (platform === platforms.Battlenet || platform === platforms.Activision || platform === platforms.Uno) gamertag = cleanClientName(gamertag);
         if (platform === platforms.Uno || platform === platforms.Activision) platform = platforms.Uno;
