@@ -326,7 +326,7 @@ class VG {
         if (platform === platforms.Uno || platform === platforms.Activision) platform = platforms.Uno;
         return await sendRequest(`/crm/cod/v2/title/vg/platform/${platform}/fullMatch/mp/${matchId}/en`);
     };
-}
+} 
 
 class SHOP {
     purchasableItems = async (gameId: string) => {
